@@ -60,7 +60,7 @@ const getMovieInfo = async(movie) => {
       const jsonResponse = await response.json();
   
       const movieInfo = jsonResponse;
-      console.log(movieInfo)
+      console.log("this is " + movieInfo)
       return movieInfo;
       
     }
@@ -70,6 +70,27 @@ const getMovieInfo = async(movie) => {
   }
 
 };
+
+const getAvailableOTP = async(movie) =>{
+   const movieId = movie.id;
+   const movieEndPoint =`/movie/${movieId}/watch/providers`;
+   const requestParams =`?api_key=${tmdbKey}`;
+   const urlToFetch = `${tmdbBaseUrl}${movieEndPoint}${requestParams}`;
+   try{
+    const response = await fetch(urlToFetch);
+    if(response.ok){
+      const jsonResponse = await response.json();
+  
+      const movieInfo = jsonResponse;
+      console.log(movieInfo)
+      return movieInfo;
+      
+    }
+  }
+  catch(error){
+    console.log(error)
+  }
+}
 
 // Gets a list of movies and ultimately displays the info of a random movie from the list
 const showRandomMovie = async() => {
@@ -82,6 +103,8 @@ console.log(movies);
 const randomMovie = await getRandomMovie(movies);
 console.log(randomMovie);
 const info = await getMovieInfo(randomMovie);
+const otp = await getAvailableOTP(randomMovie);
+console.log(otp)
 console.log(info);
 displayMovie(info);
 };

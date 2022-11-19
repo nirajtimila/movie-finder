@@ -50,6 +50,36 @@ img#moviePoster {
 #movieTitle, #movieOverview {
     padding:  32px;
 }
+#release-date {
+    font-family: 'Questrial';
+    color: #FEFBEA;
+    margin-left: 100px;
+    width:  100%;
+   
+}
+#average-vote {
+    font-family: 'Questrial';
+    color: #FEFBEA;
+    width:  50%;
+    margin-left: 100px;
+    width:  100%;
+    
+}
+#runtime{
+    font-family: 'Questrial';
+    color: #FEFBEA;
+    width:  50%;
+    margin-left: 100px;
+    width:  100%; 
+}
+#release-status {
+    font-family: 'Questrial';
+    color: #FEFBEA;
+    width:  50%;
+    margin-left: 100px;
+    width:  100%;
+}
+
 
 #playBtn {
     margin-top: 20px;

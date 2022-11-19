@@ -26,8 +26,13 @@ const showBtns = () => {
 const clearCurrentMovie = () => {
     const moviePosterDiv = document.getElementById('moviePoster');
     const movieTextDiv = document.getElementById('movieText');
+    const movieRelease = document.getElementById('release-date');
+    const statusR = document.getElementById('release-status')
     moviePosterDiv.innerHTML = '';
     movieTextDiv.innerHTML = '';
+    movieRelease.innerHTML = '';
+    statusR.innerHTML='';
+
 }
 
 // After liking a movie, clears the current movie from the screen and gets another random movie
@@ -61,6 +66,37 @@ const createMovieTitle = (title) => {
   
     return titleHeader;
 };
+const createAverageVote = (averageVote) => {
+    const titleHeader = document.createElement('h1');
+    titleHeader.setAttribute('id', 'vote_average');
+    titleHeader.innerHTML = averageVote;
+  
+    return titleHeader;
+};
+const createRunTime = (runtime) => {
+    const titleHeader = document.createElement('h1');
+    titleHeader.setAttribute('id', 'runtime');
+    titleHeader.innerHTML = runtime;
+  
+    return titleHeader;
+};
+const createStatus = (status) => {
+    const titleHeader = document.createElement('h3');
+    titleHeader.setAttribute('id', 'status');
+    titleHeader.innerHTML = status;
+  
+    return titleHeader;
+};
+
+const createMovieRelease = (releasedate) => {
+    const titleHeader = document.createElement('h1');
+    titleHeader.setAttribute('id', 'release-date');
+    titleHeader.innerHTML = releasedate;
+  
+    return titleHeader;
+};
+
+
 
 // Create HTML for movie overview
 const createMovieOverview = (overview) => {
@@ -84,16 +120,36 @@ const displayMovie = (movieInfo) => {
     const movieTextDiv = document.getElementById('movieText');
     const likeBtn = document.getElementById('likeBtn');
     const dislikeBtn = document.getElementById('dislikeBtn');
+    const statusRelease = document.getElementById('release-status');
+   
+    const releaseDate = document.getElementById('release-date');
+    
+   
+    const averageVote = document.getElementById('average-vote');
+    averageVote.innerHTML = "Average Vote: "
+
+    const runTime = document.getElementById('runtime')
+    runTime.innerHTML = "Runtime: "
+
   
     // Create HTML content containing movie info
     const moviePoster = createMoviePoster(movieInfo.poster_path);
     const titleHeader = createMovieTitle(movieInfo.title);
     const overviewText = createMovieOverview(movieInfo.overview);
-  
+    const status = createStatus(movieInfo.status);
+    const release = createMovieRelease(movieInfo.release_date);
+    const aveVote = createAverageVote(movieInfo.vote_average);
+    const runTimeMin = createRunTime(movieInfo.runtime);
     // Append title, poster, and overview to page
     moviePosterDiv.appendChild(moviePoster);
     movieTextDiv.appendChild(titleHeader);
     movieTextDiv.appendChild(overviewText);
+    statusRelease.appendChild(status);
+    releaseDate.appendChild(release);
+    averageVote.appendChild(aveVote);
+    runTime.appendChild(runTimeMin);
+    
+    
   
     showBtns();
     likeBtn.onclick = likeMovie;
